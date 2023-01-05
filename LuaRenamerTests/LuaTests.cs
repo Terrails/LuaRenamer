@@ -60,13 +60,14 @@ namespace LuaRenamerTests
                         a.Relations == new List<IRelatedAnime>
                         {
                             Mock.Of<IRelatedAnime>(ira =>
+                                ira.RelationType == RelationType.Sequel &&
                                 ira.RelatedAnime == Mock.Of<IAnime>(ra => 
-                                    ra.AnimeID == 643 &&
+                                    ra.AnimeID == 533 &&
                                     ra.PreferredTitle == "prefSequelTitle" &&
                                     ra.Restricted &&
                                     a.Type == AnimeType.Movie &&
-                                    a.EpisodeCounts == new EpisodeCounts { Episodes = 4 } &&
-                                    a.AirDate == new DateTime(2002, 2, 24) &&
+                                    a.EpisodeCounts == new EpisodeCounts { Episodes = 20 } &&
+                                    a.AirDate == new DateTime(2001, 1, 21) &&
                                     a.Titles == new List<AnimeTitle>
                                     {
                                         new()
@@ -96,10 +97,8 @@ namespace LuaRenamerTests
                                     } &&
                                     a.Relations == new List<IRelatedAnime>
                                     {
-                                        
                                     }
-                                ) &&
-                                ira.RelationType == RelationType.Sequel
+                                )
                             )
                         }
                         // &&
