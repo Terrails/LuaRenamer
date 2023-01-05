@@ -56,8 +56,12 @@ namespace LuaRenamerTests
                                 Language = TitleLanguage.English,
                                 Type = TitleType.Main
                             }
-                        } &&
-                        a.Relations == new List<IRelatedAnime>{}
+                        } && 
+                        a.Relations == new List<IRelatedAnime>
+                        {
+                        }
+                        // &&
+                        // a.Relations == new List<IRelatedAnime>{}
                         // &&
                         // a.Relations == new List<IRelatedAnime>
                         // {
