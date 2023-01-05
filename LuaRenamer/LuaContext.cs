@@ -145,6 +145,8 @@ end
             return GetTableDict(luaEnv);
         }
 
+        private static List<int> traversed = new List<int>{};
+
         private Dictionary<string, object?> CreateLuaEnv()
         {
             List<Dictionary<string, string?>> ConvertTitles(IEnumerable<AnimeTitle> titles)
@@ -161,7 +163,7 @@ end
             Dictionary<string, string> ConvertEnum<T>() =>
                 Enum.GetValues(typeof(T)).Cast<T>().ToDictionary(a => a!.ToString()!, a => a!.ToString()!);
 
-            var traversed = new List<int>{};
+
             Dictionary<string, object?> ConvertAnime(IAnime anime)
             {
                 if (traversed.Contains(anime.AnimeID)) {
@@ -200,6 +202,7 @@ end
                 };
             }
 
+            traversed.Clear();
             var animes = _args.AnimeInfo.Select(a => ConvertAnime(a)).ToList();
 
             var anidb = _args.FileInfo.AniDBFileInfo is null
